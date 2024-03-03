@@ -1,5 +1,11 @@
 ## [PureMVC](http://puremvc.github.com/) [JavaScript](https://github.com/PureMVC/puremvc-js-multicore-framework/wiki) Utility: Async Command
-The Async Command utility offers a solution to the problem of executing a series of commands each of which may need to complete one or more asynchronous operations before the next command is executed.
+The Async Command utility offers a solution to the problem of executing a series of commands each of which may need to complete one or more asynchronous operations before the next command is executed. 
+
+The problem can be handled without this utility, by having a `SimpleCommand` send a notification when a promise resolves, thereby triggering the next command.
+
+But that leads to a tight coupling of one command to the next, if the first must know the notification to send in order to trigger the second.
+
+With the `AsyncCommand` and `AsyncMacroCommand` you could dynamically create a pipeline of commands to be executed sequentially, each of which may have multiple async tasks to complete. None need know anything about the others.
 
 ## Ported Utility
 * This is a direct port of the original [AS3 AsyncCommand utility](https://github.com/PureMVC/puremvc-as3-util-asynccommand)
