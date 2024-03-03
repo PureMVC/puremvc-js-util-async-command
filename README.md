@@ -4,10 +4,10 @@ The Async Command utility offers a solution to the problem of executing a series
 ## Ported Utility
 * This is a direct port of the original [AS3 AsyncCommand utility](https://github.com/PureMVC/puremvc-as3-util-asynccommand)
 * [Historical Discussion](http://forums.puremvc.org/index.php?topic=831.0)
-* TODO: Tests and demos
 
 ## Status
-Production - [Version 1.0](https://github.com/PureMVC/puremvc-js-util-async-command/blob/master/VERSION)
+Beta - [Version 1.0](https://github.com/PureMVC/puremvc-js-util-async-command/blob/master/VERSION)
+* TODO: Tests and demos
 
 ## Platforms / Technologies
 * [JavaScript](http://en.wikipedia.org/wiki/JavaScript)
