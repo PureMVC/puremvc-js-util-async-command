@@ -1,22 +1,21 @@
 ## [PureMVC](http://puremvc.github.com/) [JavaScript](https://github.com/PureMVC/puremvc-js-multicore-framework/wiki) Utility: Async Command
 The Async Command utility offers a solution to the problem of executing a series of commands each of which may need to complete one or more asynchronous operations before the next command is executed.
 
+## Ported Utility
 * This is a direct port of the original [AS3 AsyncCommand utility](https://github.com/PureMVC/puremvc-as3-util-asynccommand)
 * [Historical Discussion](http://forums.puremvc.org/index.php?topic=831.0)
+* TODO: Tests and demos
 
 ## Status
-Production - [Version 1.0](https://github.com/PureMVC/puremvc-js-util-asynccommand/blob/master/VERSION)
-
-## Demos Using This Utility
-* [Sequential](https://github.com/PureMVC/puremvc-as3-demo-flash-sequential/wiki)
+Production - [Version 1.0](https://github.com/PureMVC/puremvc-js-util-async-command/blob/master/VERSION)
 
 ## Platforms / Technologies
-* [ActionScript 3](http://en.wikipedia.org/wiki/ActionScript)
-
+* [JavaScript](http://en.wikipedia.org/wiki/JavaScript)
 
 ## License
-* PureMVC Utility for AS3 - AsyncCommand - Copyright © 2008 Duncan Hall
-* PureMVC - Copyright © 2007-2012 Futurescale, Inc.
+* PureMVC Utility for JS - AsyncCommand - Ported by Cliff Hall (no relation)
+* From PureMVC Utility for AS3 - AsyncCommand - Copyright © 2008 Duncan Hall
+* PureMVC - Copyright © 2007-2024 Futurescale, Inc.
 * All rights reserved.
 
 * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
