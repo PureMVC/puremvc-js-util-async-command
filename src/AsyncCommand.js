@@ -4,7 +4,7 @@
               2024 Cliff Hall <cliff.hall@puremvc.org>
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 */
-import {puremvc} from '../lib/puremvc-2.0.0.js';
+import {puremvc} from '@puremvc/puremvc-js-multicore-framework';
 
 /**
  * A base IAsyncCommand implementation.

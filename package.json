@@ -1,11 +1,39 @@
 {
-  "name": "puremvc-js-util-async-command",
-  "version": "1.0.0",
-  "description": "Campaign rules evaluation and funds management system",
-  "main": "src/index.js",
+  "name": "@puremvc/puremvc-js-util-async-command",
+  "version": "1.0.2",
+  "description": "PureMVC JS MultiCore Async Command Utility",
+  "main": "bin/index.js",
   "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/PureMVC/puremvc-js-util-async-command.git"
-  }
+  },
+  "scripts": {
+    "build": "npm run clean && npm run build:lib",
+    "build:lib": "rollup -c build/rollup.conf.mjs",
+    "build:doc": "jsdoc -c build/jsdoc.json",
+    "clean": "rm -rf bin",
+    "npm:publish:dry-run": "npm publish --dry-run",
+    "npm:publish": "npm publish --access public",
+    "test": "npm run test:bdd",
+    "test:bdd": "mocha \"test/**/*.js\"",
+    "test:e2e": "npm run test:safari && npm run test:chrome && npm run test:firefox",
+    "test:safari": "nightwatch -c build/nightwatch.conf.cjs --env default",
+    "test:chrome": "nightwatch -c build/nightwatch.conf.cjs --env chrome",
+    "test:firefox": "nightwatch -c build/nightwatch.conf.cjs --env firefox"
+  },
+  "dependencies": {
+    "@puremvc/puremvc-js-multicore-framework": "^2.0.3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.6.1"
+  },
+  "files": [
+    "bin/*.*",
+    "package.json",
+    "LICENSE",
+    "VERSION",
+    "README.md"
+  ]
 }

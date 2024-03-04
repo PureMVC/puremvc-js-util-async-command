@@ -4,10 +4,11 @@ Release Date: 3/3/2024
     Platform: JavaScript (Native)
      Version: 1
     Revision: 0
-       Minor: 0
+       Minor: 2
      Authors: Copyright © 2008 Duncan Hall <duncan.hall@puremvc.org>
             : Ported in 2024 by Cliff Hall <cliff.hall@puremvc.org>
 -------------------------------------------------------------------------
 1.0.0   Initial port
-
+1.0.1   NPM package
+1.0.2   Update to latest PureMVC framework
 
