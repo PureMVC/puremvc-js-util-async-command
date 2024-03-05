@@ -118,23 +118,24 @@ export class AsyncMacroCommand	extends puremvc.Notifier
      */
     nextCommand()
     {
-        if (this.subCommands.length > 0)
+        if (this.subCommands?.length > 0)
         {
             const factory = this.subCommands.shift();
             const instance	= factory();
             let isAsync	= ( instance?.isAsync === true );
-            if (isAsync) instance.setOnComplete( this.nextCommand );
+            if (isAsync) instance.setOnComplete( () => this.nextCommand() );
             instance.initializeNotifier( this.multitonKey );
             instance.execute( this.note );
             if (!isAsync) this.nextCommand();
         } else {
-            if( this.onComplete !== null ) this.onComplete();
-            this.note 		 = null;
+            if( this?.onComplete ) this.onComplete();
+            this.note = null;
             this.onComplete	= null;
         }
     }
 
     note;           // Notification
     subCommands;    // Array of command subcommand factories
+    onComplete;     // Optional function to call when the AsyncMacro completes
     isAsync = true; // simplest workaround to lack of interfaces
 }

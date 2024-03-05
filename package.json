@@ -1,6 +1,6 @@
 {
   "name": "@puremvc/puremvc-js-util-async-command",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "PureMVC JS MultiCore Async Command Utility",
   "main": "bin/index.js",
   "type": "module",
@@ -9,7 +9,7 @@
     "url": "https://github.com/PureMVC/puremvc-js-util-async-command.git"
   },
   "scripts": {
-    "build": "npm run clean && npm run build:lib",
+    "build": "npm run clean && npm run build:lib && cp build/index.js bin/",
     "build:lib": "rollup -c build/rollup.conf.mjs",
     "build:doc": "jsdoc -c build/jsdoc.json",
     "clean": "rm -rf bin",
