@@ -4,7 +4,7 @@
               2024 Cliff Hall <cliff.hall@puremvc.org>
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 */
-import {puremvc} from '@puremvc/puremvc-js-multicore-framework';
+import {SimpleCommand, Notifier} from '@puremvc/puremvc-js-multicore-framework';
 
 /**
  * A base IAsyncCommand implementation.
@@ -14,7 +14,7 @@ import {puremvc} from '@puremvc/puremvc-js-multicore-framework';
  *
  * @see AsyncMacroCommand
  */
-export class AsyncCommand extends puremvc.SimpleCommand {
+export class AsyncCommand extends SimpleCommand {
 
     /**
      * Registers the callback for a parent <code>AsyncMacroCommand</code>.

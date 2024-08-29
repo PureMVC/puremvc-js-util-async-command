@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Home - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="AsyncCommand.html">AsyncCommand</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="AsyncCommand.html#commandComplete">commandComplete</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="AsyncCommand.html#setOnComplete">setOnComplete</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="AsyncMacroCommand.html">AsyncMacroCommand</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="AsyncMacroCommand.html#addSubCommand">addSubCommand</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="AsyncMacroCommand.html#execute">execute</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="AsyncMacroCommand.html#initializeAsyncMacroCommand">initializeAsyncMacroCommand</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="AsyncMacroCommand.html#nextCommand">nextCommand</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="AsyncMacroCommand.html#setOnComplete">setOnComplete</a></span></li>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h2><a href="http://puremvc.github.com/">PureMVC</a> <a href="https://github.com/PureMVC/puremvc-js-multicore-framework/wiki">JavaScript</a> Utility: Async Command</h2>
+<p>The Async Command utility offers a solution to the problem of executing a series of commands each of which may need to complete one or more asynchronous operations before the next command is executed.</p>
+<p>The problem can be handled without this utility, by having a <code>SimpleCommand</code> send a notification when a promise resolves, thereby triggering the next command.</p>
+<p>But that leads to a tight coupling of one command to the next, if the first must know the notification to send in order to trigger the second.</p>
+<p>With the <code>AsyncCommand</code> and <code>AsyncMacroCommand</code> you could dynamically create a pipeline of commands to be executed sequentially, each of which may have multiple async tasks to complete. None need know anything about the others.</p>
+<h2>Ported Utility</h2>
+<ul>
+<li>This is a direct port of the original <a href="https://github.com/PureMVC/puremvc-as3-util-asynccommand">AS3 AsyncCommand utility</a></li>
+<li><a href="http://forums.puremvc.org/index.php?topic=831.0">Historical Discussion</a></li>
+</ul>
+<h2>Status</h2>
+<p>Beta - <a href="https://github.com/PureMVC/puremvc-js-util-async-command/blob/master/VERSION">Version 1.0.6</a></p>
+<ul>
+<li>TODO: Tests and demos</li>
+</ul>
+<h2>Platforms / Technologies</h2>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/JavaScript">JavaScript</a></li>
+<li><a href="https://www.npmjs.com/package/@puremvc/puremvc-js-util-async-command">NPM Package</a></li>
+</ul>
+<h2>License</h2>
+<ul>
+<li>
+<p>PureMVC Utility for JS - AsyncCommand - Ported by Cliff Hall (no relation)</p>
+</li>
+<li>
+<p>From PureMVC Utility for AS3 - AsyncCommand - Copyright © 2008 Duncan Hall</p>
+</li>
+<li>
+<p>PureMVC - Copyright © 2007-2024 Futurescale, Inc.</p>
+</li>
+<li>
+<p>All rights reserved.</p>
+</li>
+<li>
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+<ul>
+<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
+<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
+<li>Neither the name of Futurescale, Inc., PureMVC.org, nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</li>
+</ul>
+</li>
+</ul>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Thu Aug 29 2024 19:10:26 GMT-0400 (Eastern Daylight Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

@@ -12,7 +12,7 @@ With the `AsyncCommand` and `AsyncMacroCommand` you could dynamically create a p
 * [Historical Discussion](http://forums.puremvc.org/index.php?topic=831.0)
 
 ## Status
-Beta - [Version 1.0.5](https://github.com/PureMVC/puremvc-js-util-async-command/blob/master/VERSION)
+Beta - [Version 1.0.6](https://github.com/PureMVC/puremvc-js-util-async-command/blob/master/VERSION)
 * TODO: Tests and demos
 
 ## Platforms / Technologies
