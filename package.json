@@ -1,6 +1,6 @@
 {
   "name": "@puremvc/puremvc-js-util-async-command",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "module",
   "main": "bin/cjs/puremvc.cjs",
   "module": "bin/esm/puremvc.js",
@@ -20,27 +20,38 @@
     "mvc"
   ],
   "scripts": {
-    "build": "npm run clean && npm run build:lib && cp build/index.js bin/",
-    "build:lib": "rollup -c build/rollup.conf.mjs",
-    "build:doc": "jsdoc -c build/jsdoc.json",
+    "build": "npm run clean && npm run build:lib && cp package.json bin/",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "clean": "rm -rf bin",
+	"lint": "eslint ./src",
+	"lint:fix": "eslint ./src --fix",
+	"format:check": "prettier --check ./src",
+	"format:fix": "prettier --write ./src",
     "npm:publish:dry-run": "npm publish --dry-run",
     "npm:publish": "npm publish --access public",
-    "test": "npm run test:bdd",
-    "test:bdd": "mocha \"test/**/*.js\"",
+    "test:bdd": "jest",
     "test:e2e": "npm run test:safari && npm run test:chrome && npm run test:firefox",
     "test:safari": "nightwatch -c build/nightwatch.conf.cjs --env default",
     "test:chrome": "nightwatch -c build/nightwatch.conf.cjs --env chrome",
-    "test:firefox": "nightwatch -c build/nightwatch.conf.cjs --env firefox"
+    "test:firefox": "nightwatch -c build/nightwatch.conf.cjs --env firefox",
+    "build:lib": "rollup -c build/rollup.conf.mjs",
+    "build:doc": "jsdoc -c build/jsdoc.json"
   },
   "dependencies": {
     "@puremvc/puremvc-js-multicore-framework": "^2.0.7"
   },
   "devDependencies": {
-    "jsdoc": "3.6.5",
-    "minami": "^1.2.3",
+    "@eslint/js": "^9.39.1",
     "@rollup/plugin-terser": "^0.4.4",
-    "rollup": "^4.6.1"
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
+    "jsdoc": "^4.0.5",
+	"jest": "^29.7.0",
+	"jest-config": "^29.7.0",
+	"jest-environment-jsdom": "^29.7.0",
+	"minami": "^1.2.3",
+	"prettier": "^3.5.1",
+    "rollup": "4.22.4"
   },
   "files": [
     "bin/**/*.*",
@@ -48,5 +59,8 @@
     "VERSION",
     "package.json",
     "README.md"
-  ]
+  ],
+  "engines": {
+	"node": ">=20"
+  }
 }

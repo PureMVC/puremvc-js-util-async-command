@@ -1,10 +1,10 @@
 PureMVC Async Command Utility for Javascript (Ported)
 --------------------------------------------------------------------------
-Release Date: 8/29/2024
+Release Date: 11/25/2025
     Platform: JavaScript (Native)
      Version: 1
     Revision: 0
-       Minor: 6
+       Minor: 7
      Authors: Copyright © 2008 Duncan Hall <duncan.hall@puremvc.org>
             : Ported in 2024 by Cliff Hall <cliff.hall@puremvc.org>
 -------------------------------------------------------------------------
@@ -14,4 +14,5 @@ Release Date: 8/29/2024
 ...
 1.0.5   Fixed issues with nullish checking and necessary closure in AsyncMacroCommand
 1.0.6   Update to use PureMVC 2.0.7 and build for cjs and esm.
+1.0.7   Github workflow based publishing setup, add rollup config
 
