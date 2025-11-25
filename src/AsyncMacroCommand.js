@@ -4,7 +4,7 @@
               2024 Cliff Hall <cliff.hall@puremvc.org>
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 */
-import {Notifier} from "@puremvc/puremvc-js-multicore-framework";
+import { Notifier } from "@puremvc/puremvc-js-multicore-framework";
 
 /**
  * A base Command implementation that executes other
@@ -37,10 +37,8 @@ import {Notifier} from "@puremvc/puremvc-js-multicore-framework";
  *
  * @see AsyncCommand
  */
-export class AsyncMacroCommand extends Notifier
-{
-
-    /**
+export class AsyncMacroCommand extends Notifier {
+  /**
      * Constructor.
      
      * You should not need to define a constructor,
@@ -50,92 +48,92 @@ export class AsyncMacroCommand extends Notifier
      * If your subclass does define a constructor, be
      * sure to call super().
      */
-    constructor()
-    {
-        super();
-        this.subCommands = [];
-        this.initializeAsyncMacroCommand();
+  constructor() {
+    super();
+    this.subCommands = [];
+    this.initializeAsyncMacroCommand();
+  }
+
+  /**
+   * Initialize the AsyncMacroCommand.
+   *
+   * In your subclass, override this method to
+   * initialize the AsyncMacroCommand's SubCommand
+   * list with factories like this:
+   *
+   *		// Initialize MyMacroCommand
+   *		function initializeAsyncMacroCommand()
+   *		{
+   *			addSubCommand( () => new FirstCommand );
+   *			addSubCommand( () => new SecondCommand );
+   *			addSubCommand( () => new ThirdCommand );
+   *		}
+   *
+   * SubCommands should extend one of the following
+   * - AsyncMacroCommand
+   * - AsyncCommand
+   * - MacroCommand
+   * - SimpleCommand
+   */
+  initializeAsyncMacroCommand() {}
+
+  /**
+   * Add a SubCommand.
+   *
+   * The SubCommands will be called in First In/First Out (FIFO)
+   * order.
+   *
+   * @param factory a function that instantiates the subcommand
+   */
+  addSubCommand(factory) {
+    this.subCommands.push(factory);
+  }
+
+  /**
+   * Registers the callback for a parent AsyncMacroCommand.
+   *
+   * @param callback	The AsyncMacroCommand method to call on completion
+   */
+  setOnComplete(callback) {
+    this.onComplete = callback;
+  }
+
+  /**
+   * Starts execution of this AsyncMacroCommand's SubCommands.
+   *
+   * The SubCommands will be called in First In/First Out (FIFO) order.
+   *
+   * @param notification the Notification object to be passed to each SubCommand.
+   */
+  execute(notification) {
+    this.note = notification;
+    this.nextCommand();
+  }
+
+  /**
+   * Execute this AsyncMacroCommand's next SubCommand.
+   *
+   * If the next SubCommand is asynchronous, a callback is registered for
+   * the command completion, else the next command is run.
+   */
+  nextCommand() {
+    if (this.subCommands?.length > 0) {
+      const factory = this.subCommands.shift();
+      const instance = factory();
+      let isAsync = instance?.isAsync === true;
+      if (isAsync) instance.setOnComplete(() => this.nextCommand());
+      instance.initializeNotifier(this.multitonKey);
+      instance.execute(this.note);
+      if (!isAsync) this.nextCommand();
+    } else {
+      if (this?.onComplete) this.onComplete();
+      this.note = null;
+      this.onComplete = null;
     }
+  }
 
-    /**
-     * Initialize the AsyncMacroCommand.
-     *
-     * In your subclass, override this method to
-     * initialize the AsyncMacroCommand's SubCommand
-     * list with factories like this:
-     *
-     *		// Initialize MyMacroCommand
-     *		function initializeAsyncMacroCommand()
-     *		{
-     *			addSubCommand( () => new FirstCommand );
-     *			addSubCommand( () => new SecondCommand );
-     *			addSubCommand( () => new ThirdCommand );
-     *		}
-     *
-     * SubCommands should extend one of the following
-     * - AsyncMacroCommand
-     * - AsyncCommand
-     * - MacroCommand 
-     * - SimpleCommand
-     */
-    initializeAsyncMacroCommand(){}
-
-    /**
-     * Add a SubCommand.
-     *
-     * The SubCommands will be called in First In/First Out (FIFO)
-     * order.
-     *
-     * @param factory a function that instantiates the subcommand
-     */
-    addSubCommand( factory ) { this.subCommands.push( factory );}
-
-    /**
-     * Registers the callback for a parent AsyncMacroCommand.
-     *
-     * @param callback	The AsyncMacroCommand method to call on completion
-     */
-    setOnComplete ( callback ) { this.onComplete = callback; }
-
-    /**
-     * Starts execution of this AsyncMacroCommand's SubCommands.
-     *
-     * The SubCommands will be called in First In/First Out (FIFO) order.
-     *
-     * @param notification the Notification object to be passed to each SubCommand.
-     */
-    execute( notification )
-    {
-        this.note = notification;
-        this.nextCommand();
-    }
-
-    /**
-     * Execute this AsyncMacroCommand's next SubCommand.
-     *
-     * If the next SubCommand is asynchronous, a callback is registered for
-     * the command completion, else the next command is run.
-     */
-    nextCommand()
-    {
-        if (this.subCommands?.length > 0)
-        {
-            const factory = this.subCommands.shift();
-            const instance	= factory();
-            let isAsync	= ( instance?.isAsync === true );
-            if (isAsync) instance.setOnComplete( () => this.nextCommand() );
-            instance.initializeNotifier( this.multitonKey );
-            instance.execute( this.note );
-            if (!isAsync) this.nextCommand();
-        } else {
-            if( this?.onComplete ) this.onComplete();
-            this.note = null;
-            this.onComplete	= null;
-        }
-    }
-
-    note;           // Notification
-    subCommands;    // Array of command subcommand factories
-    onComplete;     // Optional function to call when the AsyncMacro completes
-    isAsync = true; // simplest workaround to lack of interfaces
+  note; // Notification
+  subCommands; // Array of command subcommand factories
+  onComplete; // Optional function to call when the AsyncMacro completes
+  isAsync = true; // simplest workaround to lack of interfaces
 }

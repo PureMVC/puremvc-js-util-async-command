@@ -4,7 +4,7 @@
               2024 Cliff Hall <cliff.hall@puremvc.org>
  Your reuse is governed by the Creative Commons Attribution 3.0 License
 */
-import {SimpleCommand, Notifier} from '@puremvc/puremvc-js-multicore-framework';
+import { SimpleCommand } from "@puremvc/puremvc-js-multicore-framework";
 
 /**
  * A base IAsyncCommand implementation.
@@ -15,28 +15,25 @@ import {SimpleCommand, Notifier} from '@puremvc/puremvc-js-multicore-framework';
  * @see AsyncMacroCommand
  */
 export class AsyncCommand extends SimpleCommand {
+  /**
+   * Registers the callback for a parent <code>AsyncMacroCommand</code>.
+   *
+   * @param callback	The <code>AsyncMacroCommand</code> method to call on completion
+   */
+  setOnComplete(callback) {
+    this.onComplete = callback;
+  }
 
-    /**
-     * Registers the callback for a parent <code>AsyncMacroCommand</code>.
-     *
-     * @param callback	The <code>AsyncMacroCommand</code> method to call on completion
-     */
-    setOnComplete ( callback )
-    {
-        this.onComplete = callback;
-    }
+  /**
+   * Notify the parent AsyncMacroCommand that this command is complete.
+   *
+   * Call this method from your subclass to signify that your asynchronous
+   * command has finished.
+   */
+  commandComplete() {
+    this.onComplete();
+  }
 
-    /**
-     * Notify the parent AsyncMacroCommand that this command is complete.
-     *
-     * Call this method from your subclass to signify that your asynchronous
-     * command has finished.
-     */
-    commandComplete()
-    {
-        this.onComplete();
-    }
-
-    onComplete;     // the callback to invoke on command completion
-    isAsync = true; // simplest workaround to lack of interfaces
+  onComplete; // the callback to invoke on command completion
+  isAsync = true; // simplest workaround to lack of interfaces
 }
