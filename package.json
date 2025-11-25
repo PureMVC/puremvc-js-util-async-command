@@ -1,6 +1,6 @@
 {
   "name": "@puremvc/puremvc-js-util-async-command",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "type": "module",
   "main": "bin/cjs/puremvc.cjs",
   "module": "bin/esm/puremvc.js",
@@ -20,7 +20,7 @@
     "mvc"
   ],
   "scripts": {
-    "build": "npm run clean && npm run build:lib && cp package.json bin/",
+    "build": "npm run clean && npm run build:lib",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "clean": "rm -rf bin",
 	"lint": "eslint ./src",
